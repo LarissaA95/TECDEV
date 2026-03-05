@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SQLite;
-using System.Collections.Generic;
+﻿using SQLite;
 
 namespace AppLembreteMedicacao.Models
 {
@@ -13,22 +7,13 @@ namespace AppLembreteMedicacao.Models
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
 
-        [NotNull]
-        public string Nome { get; set; }
-
-        public string Descricao { get; set; }
-
-        [NotNull]
-        public string Dosagem { get; set; }
-
-        [NotNull]
-        public string DataInicio { get; set; }
-
-        public string DataFim { get; set; }
+        // Adicione o "= string.Empty;" ao final de cada string
+        public string Nome { get; set; } = string.Empty;
+        public string Descricao { get; set; } = string.Empty;
+        public string Dosagem { get; set; } = string.Empty;
+        public string DataInicio { get; set; } = string.Empty;
+        public string DataFim { get; set; } = string.Empty;
 
         public int Ativo { get; set; } = 1;
-
-        [Ignore]
-        public List<Horario> Horarios { get; set; }
     }
 }

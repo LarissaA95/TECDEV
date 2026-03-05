@@ -1,11 +1,5 @@
-﻿using SQLite;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AppLembreteMedicacao.Models;
 using SQLite;
-using AppLembreteMedicacao.Models;
 
 namespace AppLembreteMedicacao.Helpers
 {
@@ -76,5 +70,6 @@ namespace AppLembreteMedicacao.Helpers
 
         public Task<int> DeleteUsuario(int id)
             => _conn.DeleteAsync<Usuario>(id);
+
     }
 }
