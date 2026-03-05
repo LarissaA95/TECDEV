@@ -29,6 +29,6 @@ namespace AppLembreteMedicacao.Models
         public int Ativo { get; set; } = 1;
 
         [Ignore]
-        public List<Horario> Horarios { get; set; }
+        public List<Cronograma> Horarios { get; set; }
     }
 }

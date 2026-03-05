@@ -1,5 +1,4 @@
-﻿using SQLite;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,36 +16,48 @@ namespace AppLembreteMedicacao.Helpers
         {
             _conn = new SQLiteAsyncConnection(path);
             _conn.CreateTableAsync<Medicamento>().Wait();
-            _conn.CreateTableAsync<Horario>().Wait();
+            _conn.CreateTableAsync<Cronograma>().Wait();
             _conn.CreateTableAsync<HistoricoUso>().Wait();
             _conn.CreateTableAsync<Usuario>().Wait();
         }
-// MEDICAMENTO
+        // MEDICAMENTO
 
         public Task<int> InsertMedicamento(Medicamento m)
-            => _conn.InsertAsync(m);
+        {
+            return _conn.InsertAsync(m);
+        }
 
         public Task<List<Medicamento>> GetMedicamentos()
             => _conn.Table<Medicamento>().ToListAsync();
 
         public Task<int> UpdateMedicamento(Medicamento m)
-            => _conn.UpdateAsync(m);
-
+        {
+            return _conn.UpdateAsync(m);
+        }
         public Task<int> DeleteMedicamento(int id)
             => _conn.DeleteAsync<Medicamento>(id);
 
-        // HORARIO
+        // CRONOGRAMA
 
-        public Task<int> InsertHorario(Horario h)
-            => _conn.InsertAsync(h);
+        public Task<int> InsertCronograma(Cronograma c)
+        {
+            return _conn.InsertAsync(c);
+        }
+        public Task<List<Cronograma>> GetCronogramaPorMedicacao(int medicacaoId)
+        {
+            return _conn.Table<Cronograma>()
+            .Where(c => c.MedicamentoId == medicacaoId)
+            .ToListAsync();
+        }
+        public Task<int> UpdateCronograma(Cronograma c)
+        {
+            return _conn.UpdateAsync(c);
+        }
 
-        public Task<List<Horario>> GetHorarios(int medicamentoId)
-            => _conn.Table<Horario>()
-                    .Where(h => h.MedicamentoId == medicamentoId)
-                    .ToListAsync();
-
-        public Task<int> DeleteHorario(int id)
-            => _conn.DeleteAsync<Horario>(id);
+        public Task<int> DeleteCronograma(int id)
+        {
+            return _conn.DeleteAsync<Cronograma>(id);
+        }
 
         // HISTÓRICO 
 
@@ -64,17 +75,20 @@ namespace AppLembreteMedicacao.Helpers
         // USUARIO
 
         public Task<int> InsertUsuario(Usuario u)
-            => _conn.InsertAsync(u);
+        {
+            return _conn.InsertAsync(u);
+        }
 
-        public Task<Usuario> GetUsuarioByEmail(string email)
-            => _conn.Table<Usuario>()
-                    .Where(u => u.Email == email)
-                    .FirstOrDefaultAsync();
+        public Task<List<Usuario>> GetUsuarios()
+        {
+            return _conn.Table<Usuario>().ToListAsync();
+        }
 
-        public Task<int> UpdateUsuario(Usuario u)
-            => _conn.UpdateAsync(u);
-
-        public Task<int> DeleteUsuario(int id)
-            => _conn.DeleteAsync<Usuario>(id);
+        public Task<Usuario> GetUsuarioEmail(string email)
+        {
+            return _conn.Table<Usuario>()
+                .Where(u => u.Email == email)
+                .FirstOrDefaultAsync();
+        }
     }
 }

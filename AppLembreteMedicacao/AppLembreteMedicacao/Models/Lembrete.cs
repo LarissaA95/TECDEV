@@ -7,19 +7,16 @@ using SQLite;
 
 namespace AppLembreteMedicacao.Models
 {
-    public class HistoricoUso
+    internal class Lembrete
     {
-        [PrimaryKey, AutoIncrement]
+    [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
-
-        public int MedicamentoId { get; set; }
 
         public int CronogramaId { get; set; }
 
-        public string DataUso { get; set; }
+        public DateTime DataHoraProgramada { get; set; }
 
-        public int Tomado { get; set; } = 0;
+        public bool Enviada { get; set; }
 
-        public string DataConfirmacao { get; set; }
     }
 }
