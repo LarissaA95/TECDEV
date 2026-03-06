@@ -1,13 +1,12 @@
-<<<<<<< HEAD
 ﻿using AppLembreteMedicacao.Models;
-=======
-﻿using System;
+using SQLite;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
->>>>>>> 6128142e4441b3793957df6a0eb4c17fcb533a7c
 using SQLite;
+using AppLembreteMedicacao.Models;
 
 namespace AppLembreteMedicacao.Helpers
 {
@@ -87,20 +86,16 @@ namespace AppLembreteMedicacao.Helpers
             return _conn.Table<Usuario>().ToListAsync();
         }
 
-<<<<<<< HEAD
+        public Task<Usuario> GetUsuarioEmail(string email)
+            => _conn.Table<Usuario>()
+                    .Where(u => u.Email == email)
+                    .FirstOrDefaultAsync();
+
         public Task<int> UpdateUsuario(Usuario u)
             => _conn.UpdateAsync(u);
 
         public Task<int> DeleteUsuario(int id)
             => _conn.DeleteAsync<Usuario>(id);
 
-=======
-        public Task<Usuario> GetUsuarioEmail(string email)
-        {
-            return _conn.Table<Usuario>()
-                .Where(u => u.Email == email)
-                .FirstOrDefaultAsync();
-        }
->>>>>>> 6128142e4441b3793957df6a0eb4c17fcb533a7c
     }
 }
