@@ -15,5 +15,11 @@ namespace AppLembreteMedicacao.Models
         public string DataFim { get; set; } = string.Empty;
 
         public int Ativo { get; set; } = 1;
+<<<<<<< HEAD
+=======
+
+        [Ignore]
+        public List<Cronograma> Horarios { get; set; }
+>>>>>>> 6128142e4441b3793957df6a0eb4c17fcb533a7c
     }
 }
