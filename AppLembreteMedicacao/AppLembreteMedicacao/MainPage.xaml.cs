@@ -4,6 +4,7 @@ namespace AppLembreteMedicacao;
 
 public partial class MainPage : ContentPage
 {
+
     public MainPage()
     {
         InitializeComponent();
@@ -27,6 +28,7 @@ public partial class MainPage : ContentPage
                 Nome = entNome.Text,
                 Dosagem = entDose.Text,
                 DataInicio = dtInicio.Date.ToString("dd/MM/yyyy"),
+                DataFim = dtFim.Date.ToString("dd/MM/yyyy"),
                 Ativo = 1
             };
 

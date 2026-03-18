@@ -12,9 +12,13 @@
             <Entry x:Name="entDose" Placeholder="Dosagem (ex: 500mg)" />
 
             <Label Text="Data de Início:" />
-            <DatePicker x:Name="dtInicio" Format="dd/MM/yyyy" />
+            <DatePicker x:Name="dtInicio" Format="dd/MM/yyyy"/>
 
-            <Button Text="Salvar" Clicked="AoClicarSalvar"
+            <Label Text="Data Final:" />
+            <DatePicker x:Name="dtFim" Format="dd/MM/yyyy" />
+
+
+                <Button Text="Salvar" Clicked="AoClicarSalvar"
                     BackgroundColor="#27ae60" 
                     TextColor="White" />
         </VerticalStackLayout>

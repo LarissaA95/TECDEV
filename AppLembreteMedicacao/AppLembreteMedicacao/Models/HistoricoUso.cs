@@ -21,5 +21,6 @@ namespace AppLembreteMedicacao.Models
         public int Tomado { get; set; } = 0;
 
         public string DataConfirmacao { get; set; }
+        public bool Notificado { get; set; }
     }
 }
