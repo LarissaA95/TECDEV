@@ -1,15 +1,27 @@
-namespace AppLembreteMedicacao.Platforms.Android;
+using Android.App;
+using Android.Content;
+using Android.OS;
+using AndroidX.Core.App;
 
-public class NotificationReceiver : ContentPage
+namespace AppLembreteMedicacao.Platforms.Android
 {
-	public NotificationReceiver()
-	{
-		Content = new VerticalStackLayout
-		{
-			Children = {
-				new Label { HorizontalOptions = LayoutOptions.Center, VerticalOptions = LayoutOptions.Center, Text = "Welcome to .NET MAUI!"
-				}
-			}
-		};
-	}
+    [BroadcastReceiver(Enabled = true)]
+    public class NotificationReceiver : BroadcastReceiver
+    {
+        public override void OnReceive(Context context, Intent intent)
+        {
+            string titulo = intent.GetStringExtra("title");
+            string mensagem = intent.GetStringExtra("message");
+
+            var notification = new NotificationCompat.Builder(context, "medicacao_channel")
+                .SetContentTitle(titulo)
+                .SetContentText(mensagem)
+                .SetSmallIcon(Resource.Drawable.appicon)
+                .SetPriority(NotificationCompat.PriorityHigh)
+                .Build();
+
+            var manager = NotificationManagerCompat.From(context);
+            manager.Notify(0, notification);
+        }
+    }
 }

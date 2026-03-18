@@ -1,5 +1,6 @@
 ﻿using AppLembreteMedicacao.Models;
 
+
 namespace AppLembreteMedicacao;
 
 public partial class MainPage : ContentPage
