@@ -3,13 +3,16 @@
     x:Class="MauiAppCompras.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:MauiAppCompras"
-    Shell.FlyoutBehavior="Disabled"
+    xmlns:local="clr-namespace:MauiAppCompras.Views"
     Title="MauiAppCompras">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <TabBar>
 
+        <ShellContent Title="Produtos"
+                      ContentTemplate="{DataTemplate local:ListaProduto}" />
+
+        <ShellContent Title="Relatório"
+                      ContentTemplate="{DataTemplate local:Relatorio}" />
+
+    </TabBar>
 </Shell>
