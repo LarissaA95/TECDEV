@@ -7,7 +7,9 @@ public partial class Relatorio : ContentPage
     public Relatorio()
     {
         InitializeComponent();
-        Thread.CurrentThread.CurrentCulture = new CultureInfo("pt-BR");
+        CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("pt-BR");
+        CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("pt-BR");
+
     }
 
     private async void OnBuscarClicked(object sender, EventArgs e)

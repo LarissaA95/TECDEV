@@ -1,5 +1,6 @@
 using MauiAppCompras.Models;
 using System.Collections.ObjectModel;
+using System.Globalization;
 
 namespace MauiAppCompras.Views;
 
@@ -10,6 +11,8 @@ public partial class ListaProduto : ContentPage
     public ListaProduto()
     {
         InitializeComponent();
+        CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("pt-BR");
+        CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("pt-BR");
 
         lst_produtos.ItemsSource = lista;
     }

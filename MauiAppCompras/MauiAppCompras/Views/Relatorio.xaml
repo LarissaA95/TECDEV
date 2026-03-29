@@ -10,10 +10,10 @@
                HorizontalOptions="Center"/>
 
         <Label Text="Data Inicial"/>
-        <DatePicker x:Name="dtInicio"/>
+        <DatePicker x:Name="dtInicio" Format="dd/MM/yyyy"/>
 
         <Label Text="Data Final"/>
-        <DatePicker x:Name="dtFim"/>
+        <DatePicker x:Name="dtFim" Format="dd/MM/yyyy"/>
 
         <Button Text="Buscar"
                 Clicked="OnBuscarClicked"/>
@@ -25,7 +25,7 @@
                         <VerticalStackLayout>
                             <Label Text="{Binding Descricao}" />
                             <Label Text="{Binding Preco}" />
-                            <Label Text="{Binding DataCompra}" />
+                            <Label Text="{Binding DataCompra, StringFormat='{0:dd/MM/yyyy}'}" />
                         </VerticalStackLayout>
                     </Frame>
                 </DataTemplate>

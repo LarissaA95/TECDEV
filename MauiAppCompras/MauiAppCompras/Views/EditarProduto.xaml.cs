@@ -8,7 +8,8 @@ public partial class EditarProduto : ContentPage
     public EditarProduto()
     {
         InitializeComponent();
-        Thread.CurrentThread.CurrentCulture = new CultureInfo("pt-BR");
+        CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("pt-BR");
+        CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("pt-BR");
     }
 
     private async void ToolbarItem_Clicked(object sender, EventArgs e)
