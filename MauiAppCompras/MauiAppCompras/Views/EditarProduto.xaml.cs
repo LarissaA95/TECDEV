@@ -1,4 +1,5 @@
 using MauiAppCompras.Models;
+using System.Globalization;
 
 namespace MauiAppCompras.Views;
 
@@ -7,6 +8,7 @@ public partial class EditarProduto : ContentPage
     public EditarProduto()
     {
         InitializeComponent();
+        Thread.CurrentThread.CurrentCulture = new CultureInfo("pt-BR");
     }
 
     private async void ToolbarItem_Clicked(object sender, EventArgs e)

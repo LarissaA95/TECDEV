@@ -32,7 +32,7 @@ namespace MauiAppCompras
 
             Thread.CurrentThread.CurrentCulture = new CultureInfo("pt-BR");
 
-            MainPage = new AppShell(); // 👈 CORRETO
+            MainPage = new AppShell(); 
         }
     }
 }
