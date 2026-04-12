@@ -12,7 +12,6 @@
             <Button Text="Buscar" Clicked="Button_Clicked" />
 
             <Label x:Name="lbl_res" />
-
         </VerticalStackLayout>
     </ScrollView>
 
