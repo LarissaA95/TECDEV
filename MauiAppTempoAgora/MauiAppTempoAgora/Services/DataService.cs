@@ -16,12 +16,24 @@ namespace MauiAppTempoAgora.Services
             string url = $"https://api.openweathermap.org/data/2.5/weather?" +
                          $"q={cidade}&units=metric&appid={chave}";
 
-            using (HttpClient client = new HttpClient())
+            try
             {
-                HttpResponseMessage resp = await client.GetAsync(url);
-
-                if (resp.IsSuccessStatusCode)
+                using (HttpClient client = new HttpClient())
                 {
+                    HttpResponseMessage resp = await client.GetAsync(url);
+
+                    //Cidade não encontrada (404)
+                    if (resp.StatusCode == HttpStatusCode.NotFound)
+                    {
+                        throw new Exception("CIDADE_NAO_ENCONTRADA");
+                    }
+
+                    //Outros erros da API
+                    if (!resp.IsSuccessStatusCode)
+                    {
+                        throw new Exception("ERRO_API");
+                    }
+
                     string json = await resp.Content.ReadAsStringAsync();
 
                     var rascunho = JObject.Parse(json);
@@ -42,9 +54,14 @@ namespace MauiAppTempoAgora.Services
                         visibility = (int)rascunho["visibility"],
                         sunrise = sunrise.ToString(),
                         sunset = sunset.ToString(),
-                    }; // Fecha obj do Tempo.
-                } // Fecha if se o status do servidor foi de sucesso
-            } // fecha laço using
+                    };
+                }
+            }
+            //Sem internet ou falha de conexão
+            catch (HttpRequestException)
+            {
+                throw new Exception("SEM_INTERNET");
+            }
 
             return t;
         }

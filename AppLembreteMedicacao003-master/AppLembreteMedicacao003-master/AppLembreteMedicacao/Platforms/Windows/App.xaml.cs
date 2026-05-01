@@ -3,7 +3,7 @@
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace MauiAppTempoAgora.WinUI
+namespace AppLembreteMedicacao.WinUI
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
@@ -17,8 +17,6 @@ namespace MauiAppTempoAgora.WinUI
         public App()
         {
             this.InitializeComponent();
-            Platform.MapServiceToken = "z55QeeUbRf6mRhiZDgcP~KpONY3zL1wHlGBeb590zGg~Aky4ub2z4AnvS2RMdaU2VoYIfuWnoDGtOoUfgAi9CngN5iWe3Cps0cGqUdAnBVXT";
-        
         }
 
         protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
